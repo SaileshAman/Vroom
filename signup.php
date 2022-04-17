@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Vroom!!</title>
     <meta charset="utf-8">
@@ -18,6 +19,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -25,15 +27,15 @@
                 <ul>
                     <li> <a href="index.php">HOME</a></li>
                     <li> <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        REPAIRS
-                        </a> 
+                            REPAIRS
+                        </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">GEARBOX</a>
                             <a class="dropdown-item" href="#">CLUTCH</a>
                             <a class="dropdown-item" href="#">ENGINE</a>
                             <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">SOMETHING ELSE</a>
-                            </div>
+                            <a class="dropdown-item" href="#">SOMETHING ELSE</a>
+                        </div>
                     </li>
                     <li> <a href="about.php">ABOUT US</a></li>
                     <li> <a href="login.php">LOGIN</a></li>
@@ -49,15 +51,15 @@
                 <div class="form__message form__message--error"></div>
                 <div class="form__input-group">
                     <input type="text" class="form__input" autofocus placeholder="First name">
-                    <div class="form__input-error-message"></div>     
+                    <div class="form__input-error-message"></div>
                 </div>
                 <div class="form__input-group">
                     <input type="text" class="form__input" autofocus placeholder="Last name">
-                    <div class="form__input-error-message"></div>     
+                    <div class="form__input-error-message"></div>
                 </div>
                 <div class="form__input-group">
                     <input type="text" class="form__input" autofocus placeholder="Email Address">
-                    <div class="form__input-error-message"></div>     
+                    <div class="form__input-error-message"></div>
                 </div>
                 <div class="form__input-group">
                     <input type="password" class="form__input" autofocus placeholder="Password">
@@ -68,7 +70,7 @@
                     <div class="form__input-error-message"></div>
                 </div>
                 <button class="form__button" type="submit">SIGN UP</button>
-                
+
             </form>
         </div>
     </div>
@@ -77,6 +79,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    
+
 </body>
 </html>
