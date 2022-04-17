@@ -38,7 +38,7 @@
             .header {
                 min-height: 100vh;
                 width: 100%;
-                background-image: url("images/Title.png");
+                background-image: url("images/title.svg");
                 background-position: center;
                 background-size: cover;
                 position: relative;
@@ -53,7 +53,7 @@
 
         <div class="row">
             <div class="col-lg-6 col-6 col-12">
-                <img src="images/04.jpg" class="img-fluid aboutimg">
+                <img src="images/about.jpg" class="img-fluid aboutimg">
             </div>
             <div class="col-lg-6 col-6 col-12">
                 <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam neque ex, volutpat sit amet vestibulum nec, iaculis eu dui.

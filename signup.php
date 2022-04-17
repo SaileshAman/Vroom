@@ -44,21 +44,31 @@
 
     <div class="loginForm">
         <div class="container">
-            <form class="form" id="login">
-                <h1 class="form__title">LOGIN</h1>
+            <form class="form" id="signup">
+                <h1 class="form__title">SIGN UP</h1>
                 <div class="form__message form__message--error"></div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Username or email">
+                    <input type="text" class="form__input" autofocus placeholder="First name">
+                    <div class="form__input-error-message"></div>     
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Last name">
+                    <div class="form__input-error-message"></div>     
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Email Address">
                     <div class="form__input-error-message"></div>     
                 </div>
                 <div class="form__input-group">
                     <input type="password" class="form__input" autofocus placeholder="Password">
                     <div class="form__input-error-message"></div>
                 </div>
-                <button class="form__button" type="submit">LOGIN</button>
-                <p class="form__text">
-                    <a class="form__link" href="signup.php">New User? SignUp</a>
-                </p>
+                <div class="form__input-group">
+                    <input type="password" class="form__input" autofocus placeholder="Retype Password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <button class="form__button" type="submit">SIGN UP</button>
+                
             </form>
         </div>
     </div>
