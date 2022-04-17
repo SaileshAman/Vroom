@@ -40,13 +40,13 @@
                 width: 100%;
                 background-image: url("images/title.svg");
                 background-position: center;
-                background-size: cover;
+                /* background-size: cover; */
                 position: relative;
             }
         </style>
     </section>
 
-    <section class="my-5">
+    <section class="m-5">
         <div class="py-5">
             <h2 class="text-center">About Us</h2>
         </div>
