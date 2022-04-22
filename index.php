@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -33,13 +34,24 @@
                 </ul>
             </div>
         </nav>
+        <div class="title-header">VROOM</div>
         <style>
+            .title-header{
+                color: white;
+                font-size: 15em;
+                z-index: 5;
+                font-family: 'Cormorant Garamond', sans-serif;
+                font-weight: bolder;
+                font-style: italic;
+                letter-spacing: 0.15em;
+                text-align: center;
+                padding-top: 0.5em;
+            }
             .header {
                 min-height: 100vh;
                 width: 100%;
                 background-image: url("images/title.svg");
                 background-position: center;
-                /* background-size: cover; */
                 position: relative;
             }
         </style>
@@ -47,7 +59,7 @@
 
     <section class="m-5">
         <div class="py-5">
-            <h2 class="text-center">About Us</h2>
+            <h2 class="text-center" style="font-size: 3em;">About Us</h2>
         </div>
 
         <div class="row">
@@ -55,15 +67,10 @@
                 <img src="images/about.jpg" class="img-fluid aboutimg">
             </div>
             <div class="col-lg-6 col-6 col-12">
-                <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam neque ex, volutpat sit amet vestibulum nec, iaculis eu dui.
-                    Etiam pretium sodales bibendum. Cras ac facilisis neque. Vivamus a imperdiet erat.
-                    Phasellus nisi dolor, vehicula vitae ultrices non, rutrum non elit. Aliquam bibendum risus mauris, at tempor ante imperdiet nec.
-                    Donec eu nunc tempor, euismod diam non, sagittis purus.
-                    Sed aliquam et velit sed commodo. Vivamus vestibulum, massa id malesuada pulvinar, quam eros egestas dui, non mollis sem sapien eu mauris.
-                    Suspendisse luctus arcu vel congue efficitur. Integer ac erat massa. In ut posuere augue, sed mollis nunc.
-                    Praesent dignissim, arcu id sollicitudin fermentum, lorem tellus vestibulum enim, nec auctor quam urna nec enim.
+                <p class="py-3" style="font-size: 1.5em;">
+                    The website offers exclusive range of automobile parts that perfectly satisfy the need of the customers. Just enter the model of your vehicle and we will provide a wide range of hardware products compatible to your vehicle. We also provide custom service options and vehicle service appointments can be made at ease.
                 </p>
-                <a class="btn btn-success" href="about.php">About Us</a>
+                <a class="btn btn-success" href="about.php">Know More</a>
             </div>
         </div>
     </section>
