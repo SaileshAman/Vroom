@@ -46,36 +46,55 @@
 
     <div class="loginForm">
         <div class="container">
-            <form class="form" id="signup">
+            <form class="form" id="signup" method="post" action="function.php">
                 <h1 class="form__title">SIGN UP</h1>
                 <div class="form__message form__message--error"></div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="First name">
-                    <div class="form__input-error-message"></div>
+                    <select class="form__input form-select" aria-label="Customers/Mechanic">
+                        <option selected>Customer/Mechanic</option>
+                        <option value="0">Customer</option>
+                        <option value="1">Mechanic</option>
+                    </select>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Last name">
-                    <div class="form__input-error-message"></div>
+                    <input type="text" class="form__input" autofocus placeholder="First Name">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Last Name">
                 </div>
                 <div class="form__input-group">
                     <input type="text" class="form__input" autofocus placeholder="Email Address">
-                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Mobile">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Address Line">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="City">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Pincode">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Username">
                 </div>
                 <div class="form__input-group">
                     <input type="password" class="form__input" autofocus placeholder="Password">
-                    <div class="form__input-error-message"></div>
                 </div>
                 <div class="form__input-group">
                     <input type="password" class="form__input" autofocus placeholder="Retype Password">
-                    <div class="form__input-error-message"></div>
                 </div>
                 <button class="form__button" type="submit">SIGN UP</button>
-
             </form>
         </div>
     </div>
 
-    <!--<script src="login.js"></script>-->
+    <footer>
+        <div><br><br><br></div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>

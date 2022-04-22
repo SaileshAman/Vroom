@@ -48,12 +48,17 @@
                 <h1 class="form__title">LOGIN</h1>
                 <div class="form__message form__message--error"></div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Username or email">
-                    <div class="form__input-error-message"></div>     
+                    <select class="form__input form-select" aria-label="Customers/Mechanic">
+                        <option selected>Customer/Mechanic</option>
+                        <option value="0">Customer</option>
+                        <option value="1">Mechanic</option>
+                    </select>
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Username/Email"> 
                 </div>
                 <div class="form__input-group">
                     <input type="password" class="form__input" autofocus placeholder="Password">
-                    <div class="form__input-error-message"></div>
                 </div>
                 <button class="form__button" type="submit">LOGIN</button>
                 <p class="form__text">
@@ -63,7 +68,6 @@
         </div>
     </div>
 
-    <!--<script src="login.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
