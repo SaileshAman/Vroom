@@ -17,16 +17,15 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="nav-links">
                 <ul>
-                    <li> <a href="#">HOME</a></li>
-                    <li> <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            REPAIRS
-                        </a>
+                    <li> <a href="index.php">HOME</a></li>
+                    <li> <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            REPAIRS</a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">GEARBOX</a>
-                            <a class="dropdown-item" href="#">CLUTCH</a>
-                            <a class="dropdown-item" href="#">ENGINE</a>
+                            <a class="dropdown-item" href="login.php">GEARBOX</a>
+                            <a class="dropdown-item" href="login.php">CLUTCH</a>
+                            <a class="dropdown-item" href="login.php">ENGINE</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">SOMETHING ELSE</a>
+                            <a class="dropdown-item" href="login.php">SOMETHING ELSE</a>
                         </div>
                     </li>
                     <li> <a href="about.php">ABOUT US</a></li>

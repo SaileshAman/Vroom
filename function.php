@@ -37,7 +37,7 @@
             $password = md5($password_1);//encrypt the password before saving in the database
     
             if (isset($_POST['user_type'])) {
-                $user_type = e($_POST['user_type']);
+                $user_type = escape($_POST['user_type']);
                 $query = "INSERT INTO users (username, email, user_type, password) 
                           VALUES('$username', '$email', '$user_type', '$password')";
                 mysqli_query($db, $query);
