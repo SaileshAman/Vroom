@@ -1,7 +1,45 @@
+<?php 
+
+include 'config.php';
+error_reporting(0);
+session_start();
+
+if (isset($_SESSION['username']) && $_SESSION['type'] == "customers")
+    header("Location: cust.php");
+else if (isset($_SESSION['username']) && $_SESSION['type'] == "mechanics")
+    header("Location: mech.php");
+
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email']; $password = md5($_POST['password']);  $table="";
+    echo $email;
+    echo $password;
+    if($_POST['type'] == "0")
+        $table = "customers";
+    else if($_POST['type'] == "1")
+        $table = "mechanics";
+
+	$sql = "SELECT * FROM $table WHERE email='$email'";
+	$result = mysqli_query($conn, $sql);
+	if(mysqli_num_rows($result) > 0) {
+		$row = mysqli_fetch_array($result);
+		$_SESSION['username'] = $row['username'];
+        $_SESSION['type'] = $table;
+        echo "<script>alert('Login Success!!)</script>";
+        if($table == "customers")
+            header("Location: cust.php");
+        else if($table == "mechanics")
+            header("Location: mech.php");
+	} else 
+		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Signin Page</title>
+    <title>Login Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/login.css">
@@ -43,23 +81,22 @@
 
     <div class="loginForm">
         <div class="container">
-            <form class="form" id="login">
+            <form class="form" id="login" action="login.php" method="post">
                 <h1 class="form__title">LOGIN</h1>
-                <div class="form__message form__message--error"></div>
                 <div class="form__input-group">
-                    <select class="form__input form-select" aria-label="Customers/Mechanic">
+                    <select class="form__input form-select" aria-label="Customers/Mechanic" name="type">
                         <option selected>Customer/Mechanic</option>
                         <option value="0">Customer</option>
                         <option value="1">Mechanic</option>
                     </select>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Username/Email"> 
+                    <input type="text" class="form__input" placeholder="Email" name="email" value="<?php echo $email;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="password" class="form__input" autofocus placeholder="Password">
+                    <input type="password" class="form__input" placeholder="Password" name="password" value="<?php echo $password;?>">
                 </div>
-                <button class="form__button" type="submit">LOGIN</button>
+                <button class="form__button" type="submit" name="submit">LOGIN</button>
                 <p class="form__text">
                     <a class="form__link" href="signup.php">New User? SignUp</a>
                 </p>

@@ -1,3 +1,49 @@
+<?php 
+
+include 'config.php';
+error_reporting(0);
+session_start();
+
+if (isset($_SESSION['username']) && $_SESSION['type'] == "customers")
+    header("Location: cust.php");
+else if (isset($_SESSION['username']) && $_SESSION['type'] == "mechanics")
+    header("Location: mech.php");
+
+if (isset($_POST['submit'])) {
+	$fname = $_POST['fname'];   $lname = $_POST['lname'];
+    $email = $_POST['email'];   $mobile = $_POST['mobile'];
+    $addr = $_POST['addr'];     $city = $_POST['city'];     $pincode = $_POST['pincode'];
+	$password = md5($_POST['password']);    $cpassword = md5($_POST['cpassword']); $table="";
+    if($_POST['type'] == "0")
+        $table = "customers";
+    else if($_POST['type'] == "1")
+        $table = "mechanics";
+
+	if ($password == $cpassword) {
+		$sql = "SELECT * FROM $table WHERE email='$email'";
+		$result = mysqli_query($conn, $sql);
+        $rowcount = mysqli_num_rows($result);
+		if ($rowcount == 0) {
+            $id = abs(crc32(uniqid()));
+			$sql = "INSERT INTO $table
+				    VALUES ('$id', '$fname', '$lname', '$email', '$mobile', '$addr', '$city', '$pincode', '$password')";
+			$result = mysqli_query($conn, $sql);
+			if ($result) {
+				echo "<script>alert('Wow! User Registration Completed. You can Login from LOGIN PAGE..')</script>";
+                $fname = "";    $lname = "";
+                $email = "";    $mobile = "";
+                $addr = "";     $city = "";     $pincode = "";
+				$password = "";    $cpassword = "";
+			} else 
+				echo "<script>alert('Woops! Something Wrong Went!')</script>";
+		} else 
+			echo "<script>alert('Oops! Email Already Exists!')</script>";
+	} else 
+		echo "<script>alert('Password Not Matched!')</script>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,47 +91,43 @@
 
     <div class="loginForm">
         <div class="container">
-            <form class="form" id="signup" method="post" action="function.php">
+            <form class="form" id="signup" method="post" action="signup.php">
                 <h1 class="form__title">SIGN UP</h1>
-                <div class="form__message form__message--error"></div>
                 <div class="form__input-group">
-                    <select class="form__input form-select" aria-label="Customers/Mechanic">
+                    <select class="form__input form-select" aria-label="Customers/Mechanic" name="type">
                         <option selected>Customer/Mechanic</option>
                         <option value="0">Customer</option>
                         <option value="1">Mechanic</option>
                     </select>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="First Name">
+                    <input type="text" class="form__input" placeholder="First Name" name="fname" value="<?php echo $fname;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Last Name">
+                    <input type="text" class="form__input" placeholder="Last Name" name="lname" value="<?php echo $lname;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Email Address">
+                    <input type="text" class="form__input" placeholder="Email" name="email" value="<?php echo $email;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Mobile">
+                    <input type="text" class="form__input" placeholder="Mobile" name="mobile" value="<?php echo $mobile;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Address Line">
+                    <input type="text" class="form__input" placeholder="Address Line" name="addr" value="<?php echo $addr;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="City">
+                    <input type="text" class="form__input" placeholder="City" name="city" value="<?php echo $city;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Pincode">
+                    <input type="text" class="form__input" placeholder="Pincode" name="pincode" value="<?php echo $pincode;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Username">
+                    <input type="password" class="form__input" placeholder="Password" name="password" value="<?php echo $password;?>">
                 </div>
                 <div class="form__input-group">
-                    <input type="password" class="form__input" autofocus placeholder="Password">
+                    <input type="password" class="form__input" placeholder="Retype Password" name="cpassword" value="<?php echo $cpassword;?>">
                 </div>
-                <div class="form__input-group">
-                    <input type="password" class="form__input" autofocus placeholder="Retype Password">
-                </div>
-                <button class="form__button" type="submit">SIGN UP</button>
+                <button class="form__button" type="submit" name="submit">SIGN UP</button>
             </form>
         </div>
     </div>
