@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
 
     <div class="loginForm">
         <div class="container">
-            <form class="form" id="signup" method="post" action="signup.php">
+            <form class="form" id="signup" method="POST" action="">
                 <h1 class="form__title">SIGN UP</h1>
                 <div class="form__input-group">
                     <select class="form__input form-select" aria-label="Customers/Mechanic" name="type">

@@ -11,27 +11,25 @@ else if (isset($_SESSION['username']) && $_SESSION['type'] == "mechanics")
 
 
 if (isset($_POST['submit'])) {
-    $email = $_POST['email']; $password = md5($_POST['password']);  $table="";
-    echo $email;
-    echo $password;
+    $email = $_POST['email'];   $password = md5($_POST['password']);    $table="";
     if($_POST['type'] == "0")
         $table = "customers";
     else if($_POST['type'] == "1")
         $table = "mechanics";
 
-	$sql = "SELECT * FROM $table WHERE email='$email'";
-	$result = mysqli_query($conn, $sql);
-	if(mysqli_num_rows($result) > 0) {
-		$row = mysqli_fetch_array($result);
-		$_SESSION['username'] = $row['username'];
+    $sql = "SELECT * FROM $table WHERE email='$email'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>alert('Login Success!!')</script>";
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['username'];
         $_SESSION['type'] = $table;
-        echo "<script>alert('Login Success!!)</script>";
-        if($table == "customers")
+        if($_SESSION['type'] == "customers")
             header("Location: cust.php");
-        else if($table == "mechanics")
+        else if($_SESSION['type'] == "mechanics")
             header("Location: mech.php");
-	} else 
-		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
+    } else 
+        echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
 }
 
 ?>
@@ -81,7 +79,7 @@ if (isset($_POST['submit'])) {
 
     <div class="loginForm">
         <div class="container">
-            <form class="form" id="login" action="login.php" method="post">
+        <form class="form" id="login" method="POST" action="">
                 <h1 class="form__title">LOGIN</h1>
                 <div class="form__input-group">
                     <select class="form__input form-select" aria-label="Customers/Mechanic" name="type">
