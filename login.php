@@ -9,7 +9,6 @@ if (isset($_SESSION['username']) && $_SESSION['type'] == "customers")
 else if (isset($_SESSION['username']) && $_SESSION['type'] == "mechanics")
     header("Location: mech.php");
 
-
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];   $password = md5($_POST['password']);    $table="";
     if($_POST['type'] == "0")
@@ -17,7 +16,7 @@ if (isset($_POST['submit'])) {
     else if($_POST['type'] == "1")
         $table = "mechanics";
 
-    $sql = "SELECT * FROM $table WHERE email='$email'";
+    $sql = "SELECT * FROM $table WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         echo "<script>alert('Login Success!!')</script>";

@@ -19,24 +19,30 @@ if (isset($_POST['submit'])) {
         $table = "mechanics";
 
 	if ($password == $cpassword) {
-		$sql = "SELECT * FROM $table WHERE email='$email'";
-		$result = mysqli_query($conn, $sql);
-        $rowcount = mysqli_num_rows($result);
-		if ($rowcount == 0) {
-            $id = abs(crc32(uniqid()));
-			$sql = "INSERT INTO $table
-				    VALUES ('$id', '$name', '$email', '$mobile', '$password')";
-			$result = mysqli_query($conn, $sql);
-			if ($result) {
-				echo "<script>alert('Wow! User Registration Completed. You can Login from LOGIN PAGE..')</script>";
-                $name = "";     $email = "";    $mobile = "";
-				$password = "";    $cpassword = "";
-			} else 
-				echo "<script>alert('Woops! Something Wrong Went!')</script>";
+		$sql1 = "SELECT * FROM $table WHERE email='$email'";
+		$result1 = mysqli_query($conn, $sql1);
+        $rowcount1 = mysqli_num_rows($result1);
+        if ($rowcount1 == 0) {
+            $sql2 = "SELECT * FROM $table WHERE mobile='$mobile'";
+		    $result2 = mysqli_query($conn, $sql2);
+            $rowcount2 = mysqli_num_rows($result2);
+            if ($rowcount2 == 0) {
+                $id = abs(crc32(uniqid()));
+                $sql = "INSERT INTO $table
+                        VALUES ('$id', '$name', '$email', '$mobile', '$password', 0)";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script>alert('Wow! User Registration Completed. You can Login from LOGIN PAGE..')</script>";
+                    $name = "";     $email = "";    $mobile = "";
+                    $password = "";    $cpassword = "";
+                } else 
+                    echo "<script>alert('Woops! Something Wrong Went!')</script>";
+            } else
+                echo "<script>alert('Oops! Mobile Already Exists!')</script>";
 		} else 
 			echo "<script>alert('Oops! Email Already Exists!')</script>";
 	} else 
-		echo "<script>alert('Password Not Matched!')</script>";
+		echo "<script>alert('Passwords Not Matched!')</script>";
 }
 
 ?>
@@ -113,6 +119,9 @@ if (isset($_POST['submit'])) {
                     <input type="password" class="form__input" placeholder="Retype Password" name="cpassword" value="<?php echo $cpassword;?>">
                 </div>
                 <button class="form__button" type="submit" name="submit">SIGN UP</button>
+                <p class="form__text">
+                    <a class="form__link" href="login.php">Already Have an account? Login</a>
+                </p>
             </form>
         </div>
     </div>
