@@ -10,9 +10,8 @@ else if (isset($_SESSION['username']) && $_SESSION['type'] == "mechanics")
     header("Location: mech.php");
 
 if (isset($_POST['submit'])) {
-	$fname = $_POST['fname'];   $lname = $_POST['lname'];
+	$name = $_POST['name'];
     $email = $_POST['email'];   $mobile = $_POST['mobile'];
-    $addr = $_POST['addr'];     $city = $_POST['city'];     $pincode = $_POST['pincode'];
 	$password = md5($_POST['password']);    $cpassword = md5($_POST['cpassword']); $table="";
     if($_POST['type'] == "0")
         $table = "customers";
@@ -26,13 +25,11 @@ if (isset($_POST['submit'])) {
 		if ($rowcount == 0) {
             $id = abs(crc32(uniqid()));
 			$sql = "INSERT INTO $table
-				    VALUES ('$id', '$fname', '$lname', '$email', '$mobile', '$addr', '$city', '$pincode', '$password')";
+				    VALUES ('$id', '$name', '$email', '$mobile', '$password')";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
 				echo "<script>alert('Wow! User Registration Completed. You can Login from LOGIN PAGE..')</script>";
-                $fname = "";    $lname = "";
-                $email = "";    $mobile = "";
-                $addr = "";     $city = "";     $pincode = "";
+                $name = "";     $email = "";    $mobile = "";
 				$password = "";    $cpassword = "";
 			} else 
 				echo "<script>alert('Woops! Something Wrong Went!')</script>";
@@ -101,25 +98,13 @@ if (isset($_POST['submit'])) {
                     </select>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="First Name" name="fname" value="<?php echo $fname;?>">
-                </div>
-                <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Last Name" name="lname" value="<?php echo $lname;?>">
+                    <input type="text" class="form__input" placeholder="Name" name="name" value="<?php echo $name;?>">
                 </div>
                 <div class="form__input-group">
                     <input type="text" class="form__input" placeholder="Email" name="email" value="<?php echo $email;?>">
                 </div>
                 <div class="form__input-group">
                     <input type="text" class="form__input" placeholder="Mobile" name="mobile" value="<?php echo $mobile;?>">
-                </div>
-                <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Address Line" name="addr" value="<?php echo $addr;?>">
-                </div>
-                <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="City" name="city" value="<?php echo $city;?>">
-                </div>
-                <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Pincode" name="pincode" value="<?php echo $pincode;?>">
                 </div>
                 <div class="form__input-group">
                     <input type="password" class="form__input" placeholder="Password" name="password" value="<?php echo $password;?>">
