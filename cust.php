@@ -6,17 +6,21 @@ session_start();
 
 $email = $_SESSION['email'];
 $table = $_SESSION['type'];
+$custid = "";
 $sql = "SELECT * FROM $table WHERE email='$email'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    $name = $row['name'];   $mobile = $row['mobile'];   $type = "";
+    $custid = $row['custid'];
+    $name = $row['name'];   $mobile = $row['mobile'];   $count = 0;
     if($table == "customers")
         $count = $row['requests'];
     else if($table == "mechanics")
         $count = $row['services'];
 }
 
+$sqlBase = "SELECT * FROM orders where custid='$custid'";
+$resultBase = mysqli_query($conn, $sqlBase);
 ?>
 
 <!DOCTYPE html>
@@ -57,14 +61,15 @@ if (mysqli_num_rows($result) > 0) {
         <div class="row">
             <div class="col-md">
                 <div class="card card-body">
-                    <h3>Customer Name: <?php echo $name; ?></h3>
+                    <h2>Customer Name:<br><?php echo $name; ?></h2>
+                    <a class="btn btn-outline-info btn-sm btn-block" href="service.php">Request a Service</a>
                     <a class="btn btn-outline-danger btn-sm btn-block" href="">Delete Account</a>
                 </div>
             </div>
         
             <div class="col-md">
                 <div class="card card-body">
-                    <h3>Customer Info</h3><hr>
+                    <h2>Customer Info</h2><hr>
                     <p>EMail: <?php echo $email; ?></p>
                     <p>Mobile: <?php echo $mobile; ?></p>
                 </div>
@@ -72,7 +77,7 @@ if (mysqli_num_rows($result) > 0) {
         
             <div class="col-md">
                 <div class="card card-body">
-                    <h3>Total Service Requests:</h3><hr>
+                    <h2>Total Service Requests:</h2><hr>
                     <div class="count"><?php echo $count; ?></div>
                 </div>
             </div>
@@ -82,22 +87,27 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-md">
                 <div class="card card-body">
                     <table class="table table-sm">
+                        <tr colspan="5">Pending Service Requests</tr>
                         <tr>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>Share Price</th>
-                            <th>Shares Owned</th>
+                            <th>Service No</th>
+                            <th>Mechanic Name</th>
+                            <th>Mobile</th>
+                            <th>Service Type</th>
+                            <th>Actions</th>
                         </tr>
-                        
-                        {% for S in stocks %}
-
-				        <tr>
-					    <td>{{S.SID.Name}}</td>
-					    <td>{{S.SID.Company}}</td>
-					    <td>{{S.SID.Price}}</td>
-					    <td>{{S.Shares}}</td>
-				        </tr>
-				        {% endfor %}
+                        <?php 
+                            while($rowB = mysqli_fetch_assoc($resultBase)){
+                                $sno = $rowB['servid'];
+                                $mid = $rowB['mechid']; $servtype = $rowB['servtype'];
+                                $sql2 = "SELECT * FROM mechanics WHERE mechid='$mechid'";
+                                $result2 = mysqli_query($conn, $sql2);
+                                $row2 = mysqli_fetch_assoc($result2);
+                                // echo "<tr><td>$sno</td></tr>";
+                                // ".$row2['name']."</td><td>".$row2['mobile']."</td><td>".$servtype."</td>";
+                                echo "<td><a class='btn btn-outline-danger btn-sm btn-block' href=''>Delete Resquest</a></td>
+                                </tr>";
+                            }                               
+                        ?>                            
                     </table>
                 </div>
             </div>

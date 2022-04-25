@@ -10,7 +10,7 @@ $sql = "SELECT * FROM $table WHERE email='$email'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    $name = $row['name'];   $mobile = $row['mobile'];   $type = "";
+    $name = $row['name'];   $mobile = $row['mobile'];   $count = 0;
     if($table == "customers")
         $count = $row['requests'];
     else if($table == "mechanics")
@@ -57,14 +57,14 @@ if (mysqli_num_rows($result) > 0) {
         <div class="row">
             <div class="col-md">
                 <div class="card card-body">
-                    <h3>Mechanic Name: <?php echo $name; ?></h3>
+                    <h2>Mechanic Name:<br><?php echo $name; ?></h2>
                     <a class="btn btn-outline-danger btn-sm btn-block" href="">Delete Account</a>
                 </div>
             </div>
         
             <div class="col-md">
                 <div class="card card-body">
-                    <h3>Mechanic Info</h3><hr>
+                    <h2>Mechanic Info</h2><hr>
                     <p>EMail: <?php echo $email; ?></p>
                     <p>Mobile: <?php echo $mobile; ?></p>
                 </div>
@@ -72,7 +72,7 @@ if (mysqli_num_rows($result) > 0) {
         
             <div class="col-md">
                 <div class="card card-body">
-                    <h3>Total Service Provided:</h3><hr>
+                    <h2>Total Service Provided:</h2><hr>
                     <div class="count"><?php echo $count; ?></div>
                 </div>
             </div>
@@ -90,7 +90,6 @@ if (mysqli_num_rows($result) > 0) {
                         </tr>
                         
                         {% for S in stocks %}
-
 				        <tr>
 					    <td>{{S.SID.Name}}</td>
 					    <td>{{S.SID.Company}}</td>
