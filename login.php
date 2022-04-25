@@ -4,9 +4,9 @@ include 'config.php';
 error_reporting(0);
 session_start();
 
-if (isset($_SESSION['username']) && $_SESSION['type'] == "customers")
+if (isset($_SESSION['email']) && $_SESSION['type'] == "customers")
     header("Location: cust.php");
-else if (isset($_SESSION['username']) && $_SESSION['type'] == "mechanics")
+else if (isset($_SESSION['email']) && $_SESSION['type'] == "mechanics")
     header("Location: mech.php");
 
 if (isset($_POST['submit'])) {
@@ -19,9 +19,8 @@ if (isset($_POST['submit'])) {
     $sql = "SELECT * FROM $table WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-        echo "<script>alert('Login Success!!')</script>";
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $row['username'];
+        $_SESSION['email'] = $row['email'];
         $_SESSION['type'] = $table;
         if($_SESSION['type'] == "customers")
             header("Location: cust.php");

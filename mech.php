@@ -1,3 +1,24 @@
+<?php 
+
+include 'config.php';
+error_reporting(0);
+session_start();
+
+$email = $_SESSION['email'];
+$table = $_SESSION['type'];
+$sql = "SELECT * FROM $table WHERE email='$email'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $name = $row['name'];   $mobile = $row['mobile'];   $type = "";
+    if($table == "customers")
+        $count = $row['requests'];
+    else if($table == "mechanics")
+        $count = $row['services'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +26,7 @@
     <title>Mechanic Portal</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/portal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +36,7 @@
             min-height: 100vh;
             background-position: center;
             background-size: cover;
-            background-image: linear-gradient(rgba(28, 10, 0, 0.5), rgba(204, 149, 68, 0.3)), url("images/Login.jpg");
+            background-image: linear-gradient(rgba(28, 10, 0, 0.5), rgba(204, 149, 68, 0.3)), url("images/MechPortal.png");
         }
     </style>
 </head>
@@ -25,19 +46,8 @@
             <div class="nav-links">
                 <ul>
                     <li> <a href="index.php">HOME</a></li>
-                    <li> <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        REPAIRS
-                        </a> 
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">GEARBOX</a>
-                            <a class="dropdown-item" href="#">CLUTCH</a>
-                            <a class="dropdown-item" href="#">ENGINE</a>
-                            <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">SOMETHING ELSE</a>
-                            </div>
-                    </li>
                     <li> <a href="about.php">ABOUT US</a></li>
-                    <li> <a href="login.php">LOGIN</a></li>
+                    <li> <a href="logout.php">LOGOUT</a></li>
                 </ul>
             </div>
         </nav>
@@ -47,32 +57,28 @@
         <div class="row">
             <div class="col-md">
                 <div class="card card-body">
-                    <h5>Client Name: </h5>
-                    <a class="btn btn-outline-info  btn-sm btn-block" href="">Update Account</a>
-                    <a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Account</a>
+                    <h3>Mechanic Name: <?php echo $name; ?></h3>
+                    <a class="btn btn-outline-danger btn-sm btn-block" href="">Delete Account</a>
                 </div>
             </div>
         
             <div class="col-md">
                 <div class="card card-body">
-                    <h5>Client Info</h5>
-                    <p>EMail: {{client.Email}}</p>
-                    <p>PAN: {{client.PAN}}</p>
-                    <p>Portfolio ID: {{client.Portfolio_ID}}</p>
+                    <h3>Mechanic Info</h3><hr>
+                    <p>EMail: <?php echo $email; ?></p>
+                    <p>Mobile: <?php echo $mobile; ?></p>
                 </div>
             </div>
         
             <div class="col-md">
                 <div class="card card-body">
-                    <h5>Total Assets:</h5>
-                    <hr>
-                    <h1 style="text-align: center;padding: 10px">{{assets}}</h1>
+                    <h3>Total Service Provided:</h3><hr>
+                    <div class="count"><?php echo $count; ?></div>
                 </div>
             </div>
         </div>
         
-             
-        <div class="row">
+        <div class="row my-5">
             <div class="col-md">
                 <div class="card card-body">
                     <table class="table table-sm">

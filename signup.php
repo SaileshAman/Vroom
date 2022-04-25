@@ -4,9 +4,9 @@ include 'config.php';
 error_reporting(0);
 session_start();
 
-if (isset($_SESSION['username']) && $_SESSION['type'] == "customers")
+if (isset($_SESSION['email']) && $_SESSION['type'] == "customers")
     header("Location: cust.php");
-else if (isset($_SESSION['username']) && $_SESSION['type'] == "mechanics")
+else if (isset($_SESSION['email']) && $_SESSION['type'] == "mechanics")
     header("Location: mech.php");
 
 if (isset($_POST['submit'])) {
