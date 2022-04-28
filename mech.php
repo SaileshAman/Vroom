@@ -10,6 +10,7 @@ $sql = "SELECT * FROM $table WHERE email='$email'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
+    $mechid = $row['mechid'];
     $name = $row['name'];   $mobile = $row['mobile'];   $count = 0;
     if($table == "customers")
         $count = $row['requests'];
@@ -17,6 +18,8 @@ if (mysqli_num_rows($result) > 0) {
         $count = $row['services'];
 }
 
+$sqlBase = "SELECT * FROM services where mechid='$mechid'";
+$resultBase = mysqli_query($conn, $sqlBase);
 ?>
 
 <!DOCTYPE html>
@@ -82,21 +85,27 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-md">
                 <div class="card card-body">
                     <table class="table table-sm">
+                        <tr colspan="5">Pending Service Requests</tr>
                         <tr>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>Share Price</th>
-                            <th>Shares Owned</th>
+                            <th>Service No</th>
+                            <th>Customer Name</th>
+                            <th>Mobile</th>
+                            <th>Service Type</th>
+                            <th>Actions</th>
                         </tr>
                         
-                        {% for S in stocks %}
-				        <tr>
-					    <td>{{S.SID.Name}}</td>
-					    <td>{{S.SID.Company}}</td>
-					    <td>{{S.SID.Price}}</td>
-					    <td>{{S.Shares}}</td>
-				        </tr>
-				        {% endfor %}
+                        <?php 
+                            while($rowB = mysqli_fetch_assoc($resultBase)){
+                                $sno = $rowB['servid'];
+                                $cid = $rowB['custid']; $servtype = $rowB['servtype'];
+                                $sql2 = "SELECT * FROM customers WHERE custid='$cid'";
+                                $result2 = mysqli_query($conn, $sql2);
+                                $row2 = mysqli_fetch_assoc($result2);
+                                echo "<tr><td>$sno</td><td>".$row2['name']."</td><td>".$row2['mobile']."</td><td>".$servtype."</td>";
+                                echo "<td><form action='deleteServ.php' method='POST'><input type='hidden' name='sid' value='$sno'><button type='submit' class='btn btn-primary'>Request Serviced</button></form></td>
+                                </tr>";
+                            }                               
+                        ?>
                     </table>
                 </div>
             </div>

@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) > 0) {
         $count = $row['services'];
 }
 
-$sqlBase = "SELECT * FROM orders where custid='$custid'";
+$sqlBase = "SELECT * FROM services where custid='$custid'";
 $resultBase = mysqli_query($conn, $sqlBase);
 ?>
 
@@ -99,15 +99,14 @@ $resultBase = mysqli_query($conn, $sqlBase);
                             while($rowB = mysqli_fetch_assoc($resultBase)){
                                 $sno = $rowB['servid'];
                                 $mid = $rowB['mechid']; $servtype = $rowB['servtype'];
-                                $sql2 = "SELECT * FROM mechanics WHERE mechid='$mechid'";
+                                $sql2 = "SELECT * FROM mechanics WHERE mechid='$mid'";
                                 $result2 = mysqli_query($conn, $sql2);
                                 $row2 = mysqli_fetch_assoc($result2);
-                                // echo "<tr><td>$sno</td></tr>";
-                                // ".$row2['name']."</td><td>".$row2['mobile']."</td><td>".$servtype."</td>";
-                                echo "<td><a class='btn btn-outline-danger btn-sm btn-block' href=''>Delete Resquest</a></td>
+                                echo "<tr><td>$sno</td><td>".$row2['name']."</td><td>".$row2['mobile']."</td><td>".$servtype."</td>";
+                                echo "<td><form action='deleteServ.php' method='POST'><input type='hidden' name='sid' value='$sno'><button type='submit' class='btn btn-danger'>Delete Request</button></form></td>
                                 </tr>";
                             }                               
-                        ?>                            
+                        ?>   
                     </table>
                 </div>
             </div>
