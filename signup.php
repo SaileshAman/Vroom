@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             if ($rowcount2 == 0) {
                 $id = abs(crc32(uniqid()));
                 $sql = "INSERT INTO $table
-                        VALUES ('$id', '$name', '$email', '$mobile', '$password', 0)";
+                        VALUES ('$id', '$name', '$email', '$mobile', '$password')";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     echo "<script>alert('Wow! User Registration Completed. You can Login from LOGIN PAGE..')</script>";

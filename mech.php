@@ -11,15 +11,12 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $mechid = $row['mechid'];
-    $name = $row['name'];   $mobile = $row['mobile'];   $count = 0;
-    if($table == "customers")
-        $count = $row['requests'];
-    else if($table == "mechanics")
-        $count = $row['services'];
+    $name = $row['name'];   $mobile = $row['mobile'];
 }
 
 $sqlBase = "SELECT * FROM services where mechid='$mechid'";
 $resultBase = mysqli_query($conn, $sqlBase);
+$count = mysqli_num_rows($resultBase);
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +58,7 @@ $resultBase = mysqli_query($conn, $sqlBase);
             <div class="col-md">
                 <div class="card card-body">
                     <h2>Mechanic Name:<br><?php echo $name; ?></h2>
-                    <a class="btn btn-outline-danger btn-sm btn-block" href="">Delete Account</a>
+                    <a class="btn btn-outline-danger btn-sm btn-block" href="deleteAcc.php">Delete Account</a>
                 </div>
             </div>
         

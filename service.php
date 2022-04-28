@@ -21,19 +21,7 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
     if ($result) {
         echo "<script>alert('Request Sent successfully!!')</script>";
-        $sql2 = "SELECT * FROM customers WHERE email='$email'";
-	    $result2 = mysqli_query($conn, $sql2);
-        $row2 = mysqli_fetch_assoc($result2);
-        $cnt = $row2['requests']; $cnt++;
-        $sql2 = "UPDATE customers SET requests='$cnt' WHERE email='$email'";
-	    $result2 = mysqli_query($conn, $sql2);
-
-        $sql2 = "SELECT * FROM mechanics WHERE mechid='$mechid'";
-	    $result2 = mysqli_query($conn, $sql2);
-        $row2 = mysqli_fetch_assoc($result2);
-        $cnt = $row2['services']; $cnt++;
-        $sql2 = "UPDATE mechanics SET services='$cnt' WHERE mechid='$mechid'";
-	    $result2 = mysqli_query($conn, $sql2);
+        
         header("Location: cust.php");
     } else
         echo "<script>alert('Error! Please try again later!!')</script>";

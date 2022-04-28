@@ -6,21 +6,17 @@ session_start();
 
 $email = $_SESSION['email'];
 $table = $_SESSION['type'];
-$custid = "";
 $sql = "SELECT * FROM $table WHERE email='$email'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $custid = $row['custid'];
-    $name = $row['name'];   $mobile = $row['mobile'];   $count = 0;
-    if($table == "customers")
-        $count = $row['requests'];
-    else if($table == "mechanics")
-        $count = $row['services'];
+    $name = $row['name'];   $mobile = $row['mobile'];
 }
 
 $sqlBase = "SELECT * FROM services where custid='$custid'";
 $resultBase = mysqli_query($conn, $sqlBase);
+$count = mysqli_num_rows($resultBase);
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +59,7 @@ $resultBase = mysqli_query($conn, $sqlBase);
                 <div class="card card-body">
                     <h2>Customer Name:<br><?php echo $name; ?></h2>
                     <a class="btn btn-outline-info btn-sm btn-block" href="service.php">Request a Service</a>
-                    <a class="btn btn-outline-danger btn-sm btn-block" href="">Delete Account</a>
+                    <a class="btn btn-outline-danger btn-sm btn-block" href="deleteAcc.php">Delete Account</a>
                 </div>
             </div>
         
