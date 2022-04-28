@@ -9,6 +9,6 @@ $table = $_SESSION['type'];
 $sql = "DELETE FROM $table WHERE email='$email'";
 $result = mysqli_query($conn, $sql);
 echo "<script>alert('Account has been Deleted Successfully..!!\nEmail: $email')</script>";
-header("Location: login.php");
+header("Location: logout.php");
 
 ?>
