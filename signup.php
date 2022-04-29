@@ -92,26 +92,26 @@ if (isset($_POST['submit'])) {
             <form class="form" id="signup" method="POST" action="">
                 <h1 class="form__title">SIGN UP</h1>
                 <div class="form__input-group">
-                    <select class="form__input form-select" aria-label="Customers/Mechanic" name="type">
+                    <select class="form__input form-select" aria-label="Customers/Mechanic" name="type" required>
                         <option selected>Customer/Mechanic</option>
                         <option value="0">Customer</option>
                         <option value="1">Mechanic</option>
                     </select>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Name" name="name" value="<?php echo $name;?>">
+                    <input type="text" class="form__input" placeholder="Name" name="name" id="name" value="<?php echo $name;?>"  required>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Email" name="email" value="<?php echo $email;?>">
+                    <input type="text" class="form__input" placeholder="Email" name="email" id="email" value="<?php echo $email;?>"  required>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Mobile" name="mobile" value="<?php echo $mobile;?>">
+                    <input type="text" class="form__input" placeholder="Mobile" name="mobile" id="mobile" value="<?php echo $mobile;?>"  required>
                 </div>
                 <div class="form__input-group">
-                    <input type="password" class="form__input" placeholder="Password" name="password" value="<?php echo $password;?>">
+                    <input type="password" class="form__input" placeholder="Password" name="password" id="password" value="<?php echo $password;?>" required>
                 </div>
                 <div class="form__input-group">
-                    <input type="password" class="form__input" placeholder="Retype Password" name="cpassword" value="<?php echo $cpassword;?>">
+                    <input type="password" class="form__input" placeholder="Retype Password" name="cpassword" id="cpassword" value="<?php echo $cpassword;?>" required>
                 </div>
                 <button class="form__button" type="submit" name="submit">SIGN UP</button>
                 <p class="form__text">
@@ -124,10 +124,10 @@ if (isset($_POST['submit'])) {
     <footer>
         <div><br><br><br></div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
+
+<!-- <script src="js/validation.js"></script> -->
