@@ -83,28 +83,33 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="card">
-                        <img class="card-img-top" src="images/11.jpg" alt="Card image">
+                        <img class="card-img-top" src="images/onsite_mechanic.png" alt="Card image">
                         <div class="card-body">
-                            <h4 class="card-title">John Doe</h4>
-                            <p class="card-text">Some example text.</p>
+                            <h4 class="card-title">On-site Mechanic</h4>
+                            <p class="card-text">We offer a wide range of professional mechanics who 
+                                will be at your doorstep in a click of a few buttons. From replacing tires to fixing
+                            the engine, everything is done here.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="card">
-                        <img class="card-img-top" src="images/11.jpg" alt="Card image">
+                        <img class="card-img-top" src="images/cheap_parts.png" alt="Card image">
                         <div class="card-body">
-                            <h4 class="card-title">John Doe</h4>
-                            <p class="card-text">Some example text.</p>
+                            <h4 class="card-title">Cheap Parts</h4>
+                            <p class="card-text">A vast variety of different car parts of almost all 
+                                brands are available on our website at affordable rates. From a spark 
+                            plug to break rings, everything is available at reasonable prices</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="card">
-                        <img class="card-img-top" src="images/11.jpg" alt="Card image">
+                        <img class="card-img-top" src="images/interior.png" alt="Card image">
                         <div class="card-body">
-                            <h4 class="card-title">John Doe</h4>
-                            <p class="card-text">Some example text.</p>
+                            <h4 class="card-title">Interior Aesthetics</h4>
+                            <p class="card-text">Vroom offers a lot of options for you to customize the interiors of your car,however you want!
+                            You can buy ready-made car covers or even customize your own, attach speakers, aesthetic lights and many more.</p>
                         </div>
                     </div>
                 </div>
@@ -119,32 +124,24 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
+                    <img src="images\purolator.jpg" class="img-fluid pb-4 rounded">
                 </div>
                 <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
+                    <img src="images\valeo.jpg" class="img-fluid pb-4 rounded">
                 </div>
                 <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
+                    <img src="images\bosch.png" class="img-fluid pb-4 rounded">
                 </div>
                 <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
+                    <img src="images\motherson.jpg" class="img-fluid pb-4 rounded">
                 </div>
                 <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
+                    <img src="images\eurorepar.jpg" class="img-fluid pb-4 rounded">
                 </div>
                 <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
+                    <img src="images\unominda.png" class="img-fluid pb-4 rounded">
                 </div>
-                <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
-                </div>
-                <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
-                </div>
-                <div class="colg-lg-4 col-md-4 col-12">
-                    <img src="images\11.jpg" class="img-fluid pb-4 rounded">
-                </div>
+                
             </div>
         </div>
     </section>
