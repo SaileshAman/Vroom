@@ -97,21 +97,27 @@ if (isset($_POST['submit'])) {
                         <option value="0">Customer</option>
                         <option value="1">Mechanic</option>
                     </select>
+                    <div class="form__input-error-message"></div>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Name" name="name" id="name" value="<?php echo $name;?>"  required>
+                    <input type="text" class="form__input" placeholder="Name" name="name" id="name" value="<?php echo $name;?>"  required onblur="validateName()">
+                    <div class="form__input-error-message" id="name-error"></div>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Email" name="email" id="email" value="<?php echo $email;?>"  required>
+                    <input type="text" class="form__input" placeholder="Email" name="email" id="email" value="<?php echo $email;?>"  required onblur="validateEmail()">
+                    <div class="form__input-error-message" id="email-error"></div>
                 </div>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" placeholder="Mobile" name="mobile" id="mobile" value="<?php echo $mobile;?>"  required>
+                    <input type="text" class="form__input" placeholder="Mobile" name="mobile" id="mobile" value="<?php echo $mobile;?>"  required onblur="validateMobile()">
+                    <div class="form__input-error-message" id="mobile-error"></div>
                 </div>
                 <div class="form__input-group">
-                    <input type="password" class="form__input" placeholder="Password" name="password" id="password" value="<?php echo $password;?>" required>
+                    <input type="password" class="form__input" placeholder="Password" name="password" id="password" value="<?php echo $password;?>" required onblur="validatePW()">
+                    <div class="form__input-error-message" id="pw-error"></div>
                 </div>
                 <div class="form__input-group">
                     <input type="password" class="form__input" placeholder="Retype Password" name="cpassword" id="cpassword" value="<?php echo $cpassword;?>" required>
+                    <div class="form__input-error-message"></div>
                 </div>
                 <button class="form__button" type="submit" name="submit">SIGN UP</button>
                 <p class="form__text">
@@ -130,4 +136,4 @@ if (isset($_POST['submit'])) {
 </body>
 </html>
 
-<!-- <script src="js/validation.js"></script> -->
+<script src="js/validation.js"></script>
